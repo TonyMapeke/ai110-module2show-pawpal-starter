@@ -16,6 +16,7 @@ DailyPlanner: Formats the final list of tasks and explains reasoning
 **b. Design changes**
 
 - Did your design change during implementation?
+No
 - If yes, describe at least one change and why you made it.
 
 ---
