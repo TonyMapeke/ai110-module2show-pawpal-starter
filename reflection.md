@@ -5,7 +5,13 @@
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+The initial UML design for PawPal+ follows a composition-based structure. The system centers on a Pet object that can be assigned Task objects. A dedicated Scheduler class acts as the engine.
 - What classes did you include, and what responsibilities did you assign to each?
+Pet: The pet identity that maintains the required care activities
+Task: Defines a care activity including priority, descriptipon, time limit, etc
+Scheduler: Filters and sorts the tasks 
+DailyPlanner: Formats the final list of tasks and explains reasoning
+
 
 **b. Design changes**
 
