@@ -26,6 +26,7 @@ No
 **a. Constraints and priorities**
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
+
 - How did you decide which constraints mattered most?
 
 **b. Tradeoffs**

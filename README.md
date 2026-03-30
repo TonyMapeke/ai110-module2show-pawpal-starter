@@ -22,6 +22,20 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Key features
+
+- **Chronological sorting** — The scheduler orders tasks with `Scheduler.sort_by_time()`, which sorts a list of `Task` instances by each task’s `start_time` string using a **`lambda`-based key** (`key=lambda t: t.start_time`). With consistent zero-padded `HH:MM` values, that lexicographic order matches true time-of-day order, so the Streamlit **Preview** table and any downstream logic see your day from morning through evening.
+
+- **Smart conflict detection** — `Scheduler.check_for_conflicts()` turns each task into a **half-open interval** `[start, end)` on its `due_date` by combining the calendar date with `start_time` and adding `duration_mins` via **`timedelta`**. It compares every pair of tasks: if the latest start is still before the earliest end, those windows overlap and a **human-readable warning** is returned. For pet owners, that surfaces **double-booked slots** (for example, two chores both claiming your 9:00 hour) before you rely on a plan that assumes you can be in two places at once.
+
+- **Automated recurrence** — When a task is marked complete, `Task.mark_complete()` sets `is_completed` and, for **Daily** or **Weekly** frequencies, builds the next `Task` with the same metadata and a new `due_date` computed as the original date plus **`timedelta(days=1)`** or **`timedelta(days=7)`**. `Pet.complete_task()` (and `Scheduler.handle_recurrence()`, which delegates to it) **appends** that next occurrence to the pet’s list. Owners keep **standing routines** (meds, walks, litter, grooming) on the calendar without re-entering them every day.
+
+### App preview
+
+Demo screenshots live under **`images/`** using names such as **`preview.png`** (add your captures there so they render in GitHub and local viewers).
+
+![PawPal+ app preview](images/preview.png)
+
 ## Getting started
 
 ### Setup
