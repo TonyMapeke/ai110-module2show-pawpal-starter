@@ -31,7 +31,9 @@ No
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
+The system uses a budget-based packer to fit tasks into a time window based on priority, while a separate interval-based checker flags overlaps using actual clock times. Because these two logic paths are independent, a task might fit within your total time budget but still trigger a conflict warning if the specific start times you entered overlap.
 - Why is that tradeoff reasonable for this scenario?
+It balances a lightweight greedy algorithm with essential data validation
 
 ---
 
